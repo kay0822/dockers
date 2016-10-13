@@ -22,9 +22,12 @@ rm: stop
 rmi: rm
 	docker rmi $(image)
 
-ps:
-	docker ps -a
-
 console:
 	docker exec -it $(name) /bin/bash
 	
+ps:
+	docker ps -a
+
+image:
+	docker images
+
