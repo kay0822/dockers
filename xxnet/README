@@ -1,0 +1,17 @@
+# Troubleshooting
+Q: 如果访问页面时出现以下警告：
+###We're sorry...
+###
+###... but your computer or network may be sending automated queries. To protect our users, we can't process your request right now.
+###
+###See Google Help for more information.
+
+A: 关闭ipv6
+echo 1 > /proc/sys/net/ipv6/conf/lo/disable_ipv6
+echo 1 > /proc/sys/net/ipv6/conf/all/disable_ipv6
+echo 1 > /proc/sys/net/ipv6/conf/default/disable_ipv6
+cat << EOF >> /etc/sysctl.d/20-disable-ipv6.conf
+net.ipv6.conf.lo.disable_ipv6=1
+net.ipv6.conf.all.disable_ipv6=1
+net.ipv6.conf.default.disable_ipv6=1
+EOF
