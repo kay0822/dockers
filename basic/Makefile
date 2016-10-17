@@ -10,8 +10,13 @@ build:
 run:
 	docker run -d -it --name=$(name) $(image)
 
+run-console:
+	docker run -d -it --name=$(name) $(image) --entrypoint="" /bin/bash
+
 console:
 	docker exec -it $(name) /bin/bash
+
+restart: stop start
 
 start:
 	docker start $(name) | :
@@ -30,3 +35,6 @@ ps:
 
 image:
 	docker images
+
+log:
+	docker logs $(name)
