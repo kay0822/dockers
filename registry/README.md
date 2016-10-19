@@ -18,6 +18,6 @@ openssl req -newkey rsa:2048 -nodes -keyout domain.key -x509 -days 3650 -out dom
 在客户的docker上做以下操作：
 1. vi /etc/default/docker
 DOCKER_OPTS="--insecure-registry <yoursite.com>:<port>"  
-2. 将domain.crt放到/etc/docker/certs.d/<yoursite.com>:<port>/ca.crt
+2. 将ca.crt放到/etc/docker/certs.d/<yoursite.com>:<port>/下
 
 

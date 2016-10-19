@@ -11,8 +11,8 @@ run:
 		-e "REGISTRY_AUTH=htpasswd" 						\
 		-e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm" 	\
 		-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd		\
-		-e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt 	\
-		-e REGISTRY_HTTP_TLS_KEY=/certs/domain.key 		\
+		-e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/ca.crt 		\
+		-e REGISTRY_HTTP_TLS_KEY=/certs/ca.key 				\
 		--name=$(name) registry:2
 
 console:
@@ -45,8 +45,8 @@ ro-run:
 		-e "REGISTRY_AUTH=htpasswd" 						\
 		-e "REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm" 	\
 		-e REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd		\
-		-e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/domain.crt 	\
-		-e REGISTRY_HTTP_TLS_KEY=/certs/domain.key 		\
+		-e REGISTRY_HTTP_TLS_CERTIFICATE=/certs/ca.crt 		\
+		-e REGISTRY_HTTP_TLS_KEY=/certs/ca.key 				\
 		--name=$(ro_name) registry:2
 
 ro-start:
