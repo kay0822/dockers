@@ -16,6 +16,8 @@ start:
 stop:
 	docker stop $(name) || :
 
+restart: stop start
+
 rm: stop
 	docker rm $(name) || :
 
