@@ -36,6 +36,9 @@ image:
 log:
 	docker logs $(name)
 
+gc:
+	docker exec $(name) registry garbage-collect /etc/docker/registry/config.yml
+
 ro_name=registry-ro
 ro-run:
 	docker run -d -p 5000:5000 --restart=always 			\
