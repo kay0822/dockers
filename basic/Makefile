@@ -1,34 +1,39 @@
 SHELL:=/bin/bash
+
 image=someimage
+directory=$(image)
 name=somename
 
-all: build
+all: 
 
 build:
-	docker build -t $(image) $(image)
+	docker build -t $(image) $(directory)
 
 run:
 	docker run -d -it --name=$(name) $(image)
 
 run-console:
-	docker run -d -it --name=$(name) $(image) --entrypoint="" /bin/bash
+	docker run -d -it --name=$(name) $(image) env LANG=C.UTF-8 --entrypoint="" /bin/bash
 
 console:
 	docker exec -it $(name) /bin/bash
 
-restart: stop start
+sleep:
+	sleep 1
 
 start:
-	docker start $(name) | :
+	docker start $(name) || :
 
 stop:
-	docker stop $(name) | :
+	docker stop $(name) || :
+
+restart: stop start
 
 rm: stop
-	docker rm $(name) | :
+	docker rm $(name) || :
 
 rmi: rm
-	docker rmi $(image) | :
+	docker rmi $(image) || :
 
 ps:
 	docker ps -a
